@@ -18,7 +18,6 @@ class App extends Component {
     })
   }
   onMixerVolumeChange = (event) => {
-    ('volume input event', event.target.value);
     const volumeInput = event.target.value;
     const volumeDeckA = 100 - volumeInput;
     const volumeDeckB = volumeInput;
