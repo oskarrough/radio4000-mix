@@ -1,0 +1,38 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: serif;
+  font-size: 16px;
+}
+
+.App {
+    display: flex;
+    justify-content: center;
+}
+.Deck {
+    padding: 2rem;
+}
+.Section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+radio4000-player {
+    width: 100%;
+    max-width: 25rem;
+}
+.Mixer-volumes {
+    display: flex;
+    justify-content: space-between;
+}
+.Mixer-volume {
+
+}
+.Mixer-volume--b {}
