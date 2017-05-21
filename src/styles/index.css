@@ -1,9 +1,13 @@
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
+
 body {
   margin: 0;
   padding: 0;
@@ -11,28 +15,7 @@ body {
   font-size: 16px;
 }
 
-.App {
-    display: flex;
-    justify-content: center;
-}
-.Deck {
-    padding: 2rem;
-}
-.Section {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-radio4000-player {
+img {
     width: 100%;
-    max-width: 25rem;
+    display: block;
 }
-.Mixer-volumes {
-    display: flex;
-    justify-content: space-between;
-}
-.Mixer-volume {
-
-}
-.Mixer-volume--b {}

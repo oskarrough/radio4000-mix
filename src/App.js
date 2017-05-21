@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './styles/App.css';
+import logo from './images/logo.svg';
 
 class App extends Component {
   constructor() {
@@ -30,6 +31,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+	<a className="SiteTitle" href="https://radio4000.com" target="_blank" title="Radio4000.com">
+	  <img src={ logo }/>
+	</a>
 	<section className="Section">
 	  <article className="Deck">
 	    <label className="Deck-switcher">

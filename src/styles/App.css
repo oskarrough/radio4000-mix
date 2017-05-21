@@ -1,0 +1,34 @@
+.SiteTitle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    max-width: 6rem;
+    padding: 0.5rem;
+}
+
+.App {
+    display: flex;
+    justify-content: center;
+}
+
+.Deck {
+    padding: 2rem;
+}
+
+.Section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+radio4000-player {
+    width: 100%;
+    max-width: 25rem;
+}
+
+.Mixer-volumes {
+    display: flex;
+    justify-content: space-between;
+}
+
