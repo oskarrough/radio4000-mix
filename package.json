@@ -7,8 +7,7 @@
   },
   "dependencies": {
     "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "youtube-mixer": "internet4000/radio4000-mixer"
+    "react-dom": "^15.5.4"
   },
   "scripts": {
     "start": "react-scripts start",
