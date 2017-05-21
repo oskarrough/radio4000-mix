@@ -31,8 +31,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-	<a className="SiteTitle" href="https://radio4000.com" target="_blank" title="Radio4000.com">
-	  <img src={ logo }/>
+	<a className="SiteTitle" href="https://radio4000.com" target="_blank" title="Radio4000.com" rel="noopener noreferrer">
+	  <img src={ logo } alt="mix.radio4000.com"/>
 	</a>
 	<section className="Section">
 	  <article className="Deck">
