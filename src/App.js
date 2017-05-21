@@ -6,8 +6,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      radioSlugA: 'oskar',
-      radioSlugB: '200ok',
+      radioSlugA: 'sugar-hiccup',
+      radioSlugB: 'nikita',
       volumeInput: 50,
       volumeDeckA: 50,
       volumeDeckB: 50
