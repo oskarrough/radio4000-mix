@@ -19,3 +19,7 @@ img {
     width: 100%;
     display: block;
 }
+
+label {
+    display: block;
+}

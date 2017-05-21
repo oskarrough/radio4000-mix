@@ -11,10 +11,6 @@
     justify-content: center;
 }
 
-.Deck {
-    padding: 2rem;
-}
-
 .Section {
     height: 100vh;
     display: flex;
@@ -32,3 +28,10 @@ radio4000-player {
     justify-content: space-between;
 }
 
+.Deck {
+    padding: 2rem;
+}
+
+.Deck-switcher input {
+    width: 100%;
+}
