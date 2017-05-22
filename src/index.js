@@ -6,4 +6,6 @@ import './styles/reset.css'
 import './styles/index.css';
 import './styles/r4.css';
 
+import './styles/BtnGroup.css' 
+
 ReactDOM.render(<Root />, document.getElementById('root'));

@@ -26,11 +26,12 @@ export default class Directory extends Component {
   
   render() {
     if (!this.state.channels.length) {
-      return <p>Loading...</p>
+      return (
+	<p className="Aside Directory">Loading...</p>
+      )
     }
     return (
       <aside className="Aside Directory">
-	<h2><small>Select a </small>radio4000 <small>to play</small></h2>
 	<div className="ChannelCards">
 	  { this.state.channels.map((channel, index) => <ChannelCard key={ index } model={ channel }/>) }
 	</div>
