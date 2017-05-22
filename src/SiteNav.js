@@ -10,7 +10,6 @@ export default function() {
 	<img src={ logo } alt="mix.radio4000.com"/>
       </a>
       <a href="https://github.com/internet4000/radio4000-mix" className="App-source">github</a>
-      <NavLink to="/directory" className="ToggleDirectory"><span>&larr;</span>Directory</NavLink>
     </nav>
   )
 }

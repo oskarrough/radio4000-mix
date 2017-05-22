@@ -30,8 +30,7 @@ export default class Directory extends Component {
     }
     return (
       <aside className="Aside Directory">
-	<Link to="/" className="ToggleDirectory">&rarr;Close</Link>
-	<h2><small>Select a </small>radio <small>to play</small></h2>
+	<h2><small>Select a </small>radio4000 <small>to play</small></h2>
 	<div className="ChannelCards">
 	  { this.state.channels.map((channel, index) => <ChannelCard key={ index } model={ channel }/>) }
 	</div>

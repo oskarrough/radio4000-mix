@@ -1,20 +1,27 @@
-import React from 'react';
-import { BrowserRouter as Router,
-	 Route } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import './styles/App.css';
 import SiteNav from './SiteNav';
 import MixingTable from './MixingTable';
 import Directory from './Directory';
+import DirectoryBtn from './DirectoryBtn'
 
-
-export default function App() {
-  return (
-    <Router>
+export default class App extends Component {
+  toggleDirectory() {
+    if (this.props.location.pathname === '/') {
+      this.props.history.push('/directory');
+    } else {
+      this.props.history.push('/');
+    }
+  }
+  render() {
+    return (
       <div className="App">
 	<SiteNav/>
-	<Route path="/" component={ MixingTable }/>
+	<DirectoryBtn toggle={ () => this.toggleDirectory() }/>
 	<Route path="/directory" component={ Directory }/>
+	<Route path="/" component={ MixingTable }/>
       </div>
-    </Router>
-  )
+    )
+  }
 }
