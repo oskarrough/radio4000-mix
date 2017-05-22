@@ -6,11 +6,6 @@
     padding: 0.5rem;
 }
 
-.App {
-    display: flex;
-    justify-content: center;
-}
-
 .App-source {
     position: fixed;
     top: 0.5rem;
