@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './styles/App.css';
 import logo from './images/logo.svg';
+import Deck from './Deck';
+import Mixer from './Mixer';
 
 class App extends Component {
   constructor() {
@@ -38,46 +40,22 @@ class App extends Component {
 	  <a href="https://github.com/internet4000/radio4000-mix" className="App-source">github</a>
 	</nav>
 	<section className="Section">
-	  <article className="Deck">
-	    <label className="Deck-switcher">
-	      <input type="text"
-		     name="radioSlugA"
-		     value={ this.state.radioSlugA }
-		     onChange={ this.handleChange }
-		     placeholder="radio4000 slug"/>
-	    </label>
-	    <radio4000-player className="Deck-player"
-			      slug={ this.state.radioSlugA }
-			      volume={ this.state.volumeDeckA }></radio4000-player>
-	  </article>
+	  <Deck radioSlug={ this.state.radioSlugA }
+		volumeDeck={ this.state.volumeDeckA }
+		handleChange={ this.handleChange }/>
 	</section>
 
 	<section className="Section">
-	  <article className="Mixer">
-	    <div className="Mixer-volumes">
-	      <span className="Mixer-volume Mixer-volume--a">{ this.state.volumeDeckA }%</span>
-	      <span className="Mixer-volume Mixer-volume--b">{ this.state.volumeDeckB }%</span>
-	    </div>
-	    <input className="Mixer-volumeInput"
-		   type="range"
-		   onChange={ this.onMixerVolumeChange }
-		   value={this.state.volumeInput}/>
-	  </article>
+	  <Mixer volumeDeckA={ this.state.volumeDeckA }
+		 volumeDeckB={ this.state.volumeDeckB }
+		 onMixerVolumeChange={ this.onMixerVolumeChange }
+		 volumeInput={ this.state.volumeInput } />
 	</section>
 	
 	<section className="Section">
-	  <article className="Deck">
-	    <label className="Deck-switcher">
-	      <input type="text"
-		     name="radioSlugB"
-		     value={ this.state.radioSlugB }
-		     onChange={ this.handleChange }
-		     placeholder="radio4000 slug"/>
-	    </label>
-	    <radio4000-player className="Deck-player"
-			      slug={ this.state.radioSlugB }
-			      volume={ this.state.volumeDeckB }></radio4000-player>
-	  </article>
+	  <Deck radioSlug={ this.state.radioSlugB }
+		volumeDeck={ this.state.volumeDeckB }
+		handleChange={ this.handleChange }/>
 	</section>
       </div>
     );
