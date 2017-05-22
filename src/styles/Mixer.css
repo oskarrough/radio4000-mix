@@ -1,0 +1,4 @@
+.Mixer-volumes {
+    display: flex;
+    justify-content: space-between;
+}

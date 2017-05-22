@@ -1,10 +1,13 @@
 .Directory {
     position: fixed;
+    z-index: 2;
     top: 0;
     right: 0;
     bottom: 0;
     width: 100%;
     max-width: 20rem;
-    background-color: red;
+    padding: 0.5rem;
+    background-color: lightgray;
     overflow: scroll;
+    font-size: 1rem;
 }

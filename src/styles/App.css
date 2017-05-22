@@ -8,8 +8,8 @@
 
 .App-source {
     position: fixed;
-    top: 0.5rem;
-    right: 0.5rem;
+    bottom: 0.5rem;
+    left: 0.5rem;
 }
 
 .Section {
@@ -22,11 +22,6 @@
 radio4000-player {
     width: 100%;
     max-width: 25rem;
-}
-
-.Mixer-volumes {
-    display: flex;
-    justify-content: space-between;
 }
 
 .Deck {

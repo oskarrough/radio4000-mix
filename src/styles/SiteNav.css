@@ -1,0 +1,6 @@
+.ToggleDirectory {
+    position: fixed;
+    z-index: 1;
+    top: 1rem;
+    right: 1rem;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles/Mixer.css'
 
 export default function Mixer(props) {
 
