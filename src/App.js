@@ -14,13 +14,26 @@ export default class App extends Component {
       this.props.history.push('/');
     }
   }
+
+  selectRadio = (deck, radioSlug) => {
+    this.setRadio(deck, radioSlug)
+  }
+
+  setRadio = (deck, radioSlug) => {
+    this.setState({
+      [deck]: radioSlug
+    })
+  }
+  
   render() {
     return (
       <div className="App">
 	<SiteNav/>
 	<DirectoryBtn toggle={ () => this.toggleDirectory() }/>
-	<Route path="/directory" component={ Directory }/>
-	<Route path="/" component={ MixingTable }/>
+	<Route path="/directory"
+	       component={ Directory }/>
+	<Route path="/"
+	       component={ MixingTable } />
       </div>
     )
   }

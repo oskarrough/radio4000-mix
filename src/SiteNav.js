@@ -1,9 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import logo from './images/logo.svg';
 import './styles/SiteNav.css'
 
-export default function() {
+export default function SiteNav() {
   return (
     <nav className="SiteNav">
       <a className="SiteTitle" href="https://radio4000.com" target="_blank" title="Radio4000.com" rel="noopener noreferrer">

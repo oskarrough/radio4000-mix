@@ -1,23 +1,17 @@
 import React, { Component } from 'react';
 import Deck from './Deck';
 import Mixer from './Mixer';
+import PropTypes from 'prop-types';
 import './styles/MixingTable.css';
 
-class App extends Component {
+class MixingTable extends Component {
   constructor() {
     super();
     this.state = {
-      radioSlugA: 'sugar-hiccup',
-      radioSlugB: 'nikita',
       volumeInput: 50,
       volumeDeckA: 50,
       volumeDeckB: 50
     }
-  }
-  handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
   }
   onMixerVolumeChange = (event) => {
     const volumeInput = event.target.value;
@@ -31,11 +25,10 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="MixingTable">
+      <main className="MixingTable">
 	<section className="Section">
-	  <Deck radioSlug={ this.state.radioSlugA }
-		volumeDeck={ this.state.volumeDeckA }
-		handleChange={ this.handleChange }/>
+	  <Deck radioSlug={ this.context.a }
+		volumeDeck={ this.state.volumeDeckA }/>
 	</section>
 
 	<section className="Section">
@@ -46,13 +39,17 @@ class App extends Component {
 	</section>
 	
 	<section className="Section">
-	  <Deck radioSlug={ this.state.radioSlugB }
-		volumeDeck={ this.state.volumeDeckB }
-		handleChange={ this.handleChange }/>
+	  <Deck radioSlug={ this.context.b }
+		volumeDeck={ this.state.volumeDeckB }/>
 	</section>
-      </div>
+      </main>
     );
   }
 }
 
-export default App;
+MixingTable.contextTypes = {
+  a: PropTypes.string,
+  b: PropTypes.string
+}
+
+export default MixingTable;

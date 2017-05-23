@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import './styles/Directory.css';
 import ChannelCard from './ChannelCard'
+
 
 export default class Directory extends Component {
   constructor() {
@@ -10,6 +10,7 @@ export default class Directory extends Component {
       channels: []
     }
   }
+  
   componentDidMount() {
     this.fetchRadios().then(channels => {
       this.setState({
@@ -33,7 +34,9 @@ export default class Directory extends Component {
     return (
       <aside className="Aside Directory">
 	<div className="ChannelCards">
-	  { this.state.channels.map((channel, index) => <ChannelCard key={ index } model={ channel }/>) }
+	  { this.state.channels.map((channel, index) => <ChannelCard
+							    key={ index }
+							    model={ channel } />) }
 	</div>
       </aside>
     )

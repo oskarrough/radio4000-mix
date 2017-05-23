@@ -1,28 +1,34 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './styles/ChannelCard.css';
 
-export default function ChannelCard(props) {
+function ChannelCard(props, context) {
 
   const { title,
 	  tracks,
-	  slug,
-	  handleClick } = props.model;
+	  slug } = props.model;
+
+  const { setRadio } = context;
 
   if (!tracks) return null;
 
   return (
-    <article className="ChannelCard" onClick={ () => console.log(title) }>
+    <article className="ChannelCard">
       <span>{ title } ({ tracks.length })</span>
       <div className="BtnGroup">
-	<button title="A"
-		className="Btn"
+	<button className="Btn"
 		title={`Send <${title}> to deck A`}
-		onClick={ handleClick }>A</button>
-	<button title="B"
-		className="Btn"
+		onClick={ () => setRadio('a', slug) }>A</button>
+	<button className="Btn"
 		title={`Send <${title}> to deck B`}
-		onClick={ handleClick }>B</button>
+		onClick={ () => setRadio('b', slug) }>B</button>
       </div>
     </article>
   )
 }
+
+ChannelCard.contextTypes = {
+  setRadio: PropTypes.func
+}
+
+export default ChannelCard;
