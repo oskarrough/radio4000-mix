@@ -3,6 +3,8 @@
     justify-content: space-between;
 }
 
-.Mixer-volumetInput {
+.Mixer-volumeInput {
+    margin: 0;
+    pading: 0;
     width: 100%;
 }

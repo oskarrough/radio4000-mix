@@ -31,7 +31,7 @@ class MixingTable extends Component {
 		volumeDeck={ this.state.volumeDeckA }/>
 	</section>
 
-	<section className="Section">
+	<section className="Section Section--mixer">
 	  <Mixer volumeDeckA={ this.state.volumeDeckA }
 		 volumeDeckB={ this.state.volumeDeckB }
 		 onMixerVolumeChange={ this.onMixerVolumeChange }
