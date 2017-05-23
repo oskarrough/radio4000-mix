@@ -12,8 +12,8 @@ export default class MusicProvider extends Component {
   constructor() {
     super();
     this.state = {
-      a: '200ok',
-      b: 'samro'
+      a: 'sugar-hiccup',
+      b: 'nikita'
     }
   }
 
