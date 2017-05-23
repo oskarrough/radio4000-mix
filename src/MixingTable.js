@@ -14,7 +14,7 @@ class MixingTable extends Component {
     }
   }
   onMixerVolumeChange = (event) => {
-    const volumeInput = event.target.value;
+    const volumeInput = Number(event.target.value);
     const volumeDeckA = 100 - volumeInput;
     const volumeDeckB = volumeInput;
     this.setState({
