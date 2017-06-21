@@ -5,7 +5,7 @@ export default function Deck(props) {
   return (
     <article className="Deck">
       <radio4000-player className="Deck-player"
-			slug={ radioSlug }
+			channel-slug={ radioSlug }
 			volume={ volumeDeck }></radio4000-player>
     </article>
   )
