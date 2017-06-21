@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './styles/Directory.css';
 import ChannelCard from './ChannelCard'
+import Loading from './Loading'
 
 
 export default class Directory extends Component {
@@ -28,7 +29,7 @@ export default class Directory extends Component {
   render() {
     if (!this.state.channels.length) {
       return (
-	<p className="Aside Directory">Loading...</p>
+	<p className="Aside Directory"><Loading/></p>
       )
     }
     return (
