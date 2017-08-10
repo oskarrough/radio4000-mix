@@ -6,7 +6,15 @@ function serialize(channels) {
   
   return ids.map(key => {
     let channel = channels[key];
+    
     channel['id'] = key;
+
+    if(!channel.tracks) {
+      channel.tracks = []
+    } else {
+      channel.tracks = Object.keys(channel.tracks);
+    }
+    
     return channel
   })
 }
