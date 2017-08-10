@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'whatwg-fetch';
+import 'radio4000-player'
 import Root from './Root';
 import './styles/reset.css'
 import './styles/index.css';
