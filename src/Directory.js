@@ -22,7 +22,7 @@ export default class Directory extends Component {
   render() {
     if (!this.state.channels.length) {
       return (
-	<aside className="Aside Directory"><Loading/></aside>
+        <aside className="Aside Directory"><Loading text="Loading channels"/></aside>
       )
     }
     return (
