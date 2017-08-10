@@ -29,7 +29,7 @@ export default class Directory extends Component {
   render() {
     if (!this.state.channels.length) {
       return (
-	<p className="Aside Directory"><Loading/></p>
+	<p className="Aside Directory"><Loading text="Loading channels"/></p>
       )
     }
     return (
