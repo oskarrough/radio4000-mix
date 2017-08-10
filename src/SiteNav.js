@@ -4,7 +4,7 @@ import './styles/SiteNav.css'
 export default function SiteNav() {
   return (
     <nav className="SiteNav">
-      <a href="https://support.internet4000/radio4000-mix"
+      <a href="https://support.internet4000.com/radio4000-mix"
 	 target="_blank"
 	 title="Find help about "
 	 rel="noopener noreferrer">Help</a>
