@@ -11,12 +11,6 @@
     display: flex;
 }
 
-.App-source {
-    position: fixed;
-    bottom: 0.5rem;
-    right: 0.5rem;
-}
-
 .Section {
     display: flex;
     flex-direction: column;
