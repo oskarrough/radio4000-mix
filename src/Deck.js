@@ -1,4 +1,5 @@
 import React from 'react';
+import 'radio4000-player';
 
 export default function Deck(props) {
   const { radioSlug, volumeDeck } = props;

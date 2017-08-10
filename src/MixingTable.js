@@ -25,23 +25,26 @@ class MixingTable extends Component {
   }
   render() {
     return (
-      <main className="MixingTable">
-	<section className="Section">
-	  <Deck radioSlug={ this.context.a }
-		volumeDeck={ this.state.volumeDeckA }/>
-	</section>
+      <main className="SiteMain">
+	<p className="SiteIntro">Mix radio channels from Radio4000.com</p>
+	<div className="MixingTable">
+	  <section className="Section">
+	    <Deck radioSlug={ this.context.a }
+volumeDeck={ this.state.volumeDeckA }/>
+	  </section>
 
-	<section className="Section Section--mixer">
-	  <Mixer volumeDeckA={ this.state.volumeDeckA }
-		 volumeDeckB={ this.state.volumeDeckB }
-		 onMixerVolumeChange={ this.onMixerVolumeChange }
-		 volumeInput={ this.state.volumeInput } />
-	</section>
-	
-	<section className="Section">
-	  <Deck radioSlug={ this.context.b }
-		volumeDeck={ this.state.volumeDeckB }/>
-	</section>
+	  <section className="Section Section--mixer">
+	    <Mixer volumeDeckA={ this.state.volumeDeckA }
+		   volumeDeckB={ this.state.volumeDeckB }
+		   onMixerVolumeChange={ this.onMixerVolumeChange }
+		   volumeInput={ this.state.volumeInput } />
+	  </section>
+	  
+	  <section className="Section">
+	    <Deck radioSlug={ this.context.b }
+volumeDeck={ this.state.volumeDeckB }/>
+	  </section>
+	</div>
       </main>
     );
   }

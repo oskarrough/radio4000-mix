@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
+import logo from './images/logo.svg';
 import './styles/App.css';
 import SiteNav from './SiteNav';
 import MixingTable from './MixingTable';
@@ -29,6 +30,9 @@ export default class App extends Component {
     return (
       <div className="App">
 	<SiteNav/>
+	<a className="SiteTitle" href="https://radio4000.com" target="_blank" title="Radio4000.com" rel="noopener noreferrer">
+	  <img src={ logo } alt="mix.radio4000.com"/>
+	</a>
 	<DirectoryBtn toggle={ () => this.toggleDirectory() }/>
 	<Route path="/directory"
 	       component={ Directory }/>

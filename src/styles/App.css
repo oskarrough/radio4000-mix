@@ -1,7 +1,8 @@
 .SiteTitle {
     position: fixed;
-    top: 0;
-    right: 0;
+    z-index: 3;
+    top: 0.6rem;
+    left: 1.5rem;
     max-width: 5.5rem;
     padding: 0.7rem;
 }
@@ -10,26 +11,34 @@
     display: flex;
 }
 
-.App-source {
-    position: fixed;
-    bottom: 0.5rem;
-    right: 0.5rem;
-}
-
 .Section {
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.SiteIntro {
+    padding: 1.5rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.SiteMain {
+    width: 100%;
+    min-height: 100vh;
 }
 
 radio4000-player {
     width: 100%;
     max-width: 25rem;
 }
+radio4000-player .TrackList-list {
+        min-height: 40vh;
+}
 
 .Deck {
-    padding: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .Deck-switcher input {
