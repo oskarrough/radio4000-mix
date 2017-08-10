@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { getChannels } from './api';
 import './styles/Directory.css';
 import ChannelCard from './ChannelCard'
 import Loading from './Loading'
@@ -13,23 +14,15 @@ export default class Directory extends Component {
   }
   
   componentDidMount() {
-    this.fetchRadios().then(channels => {
-      this.setState({
-	channels
-      });
-    })
-  }
-
-  fetchRadios() {
-    return fetch('https://api.radio4000.com/v1/channels/').then(res => {
-      return res.json()
+    getChannels().then(channels => {
+      this.setState({channels});
     })
   }
   
   render() {
     if (!this.state.channels.length) {
       return (
-	<p className="Aside Directory"><Loading/></p>
+	<aside className="Aside Directory"><Loading/></aside>
       )
     }
     return (
