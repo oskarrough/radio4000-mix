@@ -4800,9 +4800,9 @@ querystringify@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-1.0.0.tgz#6286242112c5b712fa654e526652bf6a13ff05cb"
 
-radio4000-player@^0.1.7:
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/radio4000-player/-/radio4000-player-0.1.7.tgz#645d2767034c70f2b97deda5db08be2f90a7a50d"
+radio4000-player@^0.1.8:
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/radio4000-player/-/radio4000-player-0.1.8.tgz#1890973168507b0cbd12edd1b054c4cc09c5aa23"
   dependencies:
     lodash.debounce "^4.0.8"
     unfetch "^3.0.0"

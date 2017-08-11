@@ -4,10 +4,11 @@ html {
     font-size: 15px;
     line-height: 1.3125;
 }
+
 html,
 button,
 input {
-    font-family: "maisonneue", "system-ui", sans-serif;
+    font-family: "Maison Neue", "system-ui", sans-serif;
 }
 
 h1,
@@ -64,25 +65,25 @@ a {
 /* Maison Neue regular/italic + bold/italic from Cloudinary */
 
 @font-face {
-    font-family: "maisonneue";
+    font-family: "Maison Neue";
     src: url("https://res.cloudinary.com/radio4000/raw/upload/v1492541388/maisonneueweb-book_ee98sm.woff2") format("woff2"); 
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
-    font-family: "maisonneue";
+    font-family: "Maison Neue";
     src: url("https://res.cloudinary.com/radio4000/raw/upload/v1492541388/maisonneueweb-bookitalic_szjrvl.woff2") format("woff2");
     font-weight: normal;
     font-style: italic;
 }
 @font-face {
-    font-family: "maisonneue";
+    font-family: "Maison Neue";
     src: url("https://res.cloudinary.com/radio4000/raw/upload/v1492541388/maisonneueweb-bold_rvmbzr.woff2") format("woff2"); 
     font-weight: bold;
     font-style: normal;
 }
 @font-face {
-    font-family: "maisonneue";
+    font-family: "Maison Neue";
     src: url("https://res.cloudinary.com/radio4000/raw/upload/v1492541388/maisonneueweb-bolditalic_awvcg5.woff2") format("woff2");
     font-weight: bold;
     font-style: italic;

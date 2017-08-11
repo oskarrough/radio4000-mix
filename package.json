@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "prop-types": "^15.5.10",
-    "radio4000-player": "^0.1.7",
+    "radio4000-player": "^0.1.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-router-dom": "^4.1.1",
