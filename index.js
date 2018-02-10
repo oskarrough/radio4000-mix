@@ -20,28 +20,19 @@ const setVolume = vol => {
 }
 
 // This is a bit crazy and should be rewritten but works for now.
-let raf
+let step
 function fadeTo(to) {
-  // Cancel any running animation.
-  if (raf) cancelAnimationFrame(raf)
-
-  let from = Number(document.querySelector('input[type="range"]').value)
-  console.log(`fading from ${from} to ${to}`)
-
-  // Animate and set volume every frame.
-  let vol = from
+  if (step) cancelAnimationFrame(step)
+	let vol = Number(document.querySelector('input[type="range"]').value)
   const frame = () => {
-    if (vol === to) {
-      cancelAnimationFrame(raf)
-      return
-    }
+		const doneFading = vol === to
+    if (doneFading) return cancelAnimationFrame(step)
+		// Go up or down
     vol = from > to ? vol - 1 : vol + 1
     setVolume(vol)
-    raf = requestAnimationFrame(frame)
+    step = requestAnimationFrame(frame)
   }
-
-  // start it.
-  raf = requestAnimationFrame(frame)
+  step = requestAnimationFrame(frame)
 }
 
 const channelTemplate = c => html`
@@ -54,7 +45,6 @@ const channelTemplate = c => html`
       data-balloon="Add to deck B" data-balloon-pos="right"
       on-click=${() => render(deckTemplate({slug: c.slug}), right)}>→</button>
   </div>`
-// <a href="https://radio4000.com/${c.slug}" on-click=${e => e.preventDefault()}">R4</a>
 
 const channelsTemplate = () => {
   const filterByTracks = (list, minimum = 20) =>
