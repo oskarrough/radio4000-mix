@@ -14,26 +14,24 @@ const setVolume = vol => {
 	vol = Number(vol)
 	const volA = 100 - vol
 	const volB = vol
-	console.log({volA, vol, volB})
 	render(deckTemplate({vol: volA}), left)
 	render(crossfaderTemplate(vol), footer)
 	render(deckTemplate({vol: volB}), right)
 }
 
-// This is a bit crazy and should be rewritten but works for now.
-let step
+// This bit could be rewritten
+let frame
 function fadeTo(to) {
-	if (step) cancelAnimationFrame(step)
+	if (frame) cancelAnimationFrame(frame) // cancel previous if already running
 	let vol = Number($('input[type="range"]').value)
-	const frame = () => {
+	const step = () => {
 		const doneFading = vol === to
-		if (doneFading) return cancelAnimationFrame(step)
-		// Go up or down
-		vol = from > to ? vol - 1 : vol + 1
+		if (doneFading) return cancelAnimationFrame(frame)
+		vol = from > to ? vol - 1 : vol + 1 // go up or down
 		setVolume(vol)
-		step = requestAnimationFrame(frame)
+		frame = requestAnimationFrame(step) // run again
 	}
-	step = requestAnimationFrame(frame)
+	frame = requestAnimationFrame(step) // start
 }
 
 const channelTemplate = c => html`
