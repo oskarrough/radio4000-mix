@@ -1,4 +1,3 @@
 node_modules/
-!node_modules/lit-html/lib/lit-extended.js
 dist/
 .cache/
