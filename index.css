@@ -8,19 +8,44 @@ body {
   display: flex;
   margin: 0;
   overflow: hidden;
-  font-family: Maison Neue, maisonneue, system-ui, sans-serif; 
+  font-family: Maison Neue, maisonneue, system-ui, sans-serif;
 }
 
-aside {
+main {
   flex: 1;
   display: flex;
   flex-flow: nowrap column;
+}
+
+main h3 {
+  display: inline;
+  font-weight: normal;
+  font-size: 1em;
+  margin: 0 auto;
 }
 
 left,
 right {
   flex: 1;
   display: flex;
+  background: #f5f5f5;
+}
+
+left {
+	border-right: 1px solid #b3b3b3;
+}
+
+right {
+	border-left: 1px solid #b3b3b3;
+}
+
+footer {
+  margin-top: auto;
+	flex-shrink: 0;
+	border-top: 1px solid #b3b3b3;
+	background: hsl(0, 0%, 90%);
+	display: flex;
+  padding: 1.5em;
 }
 
 radio4000-player {
@@ -35,29 +60,15 @@ radio4000-player {
 }
 
 input[type="range"] {
-  padding: 2em 0;
-  margin: 0 2em;
+	flex: 1;
+	margin: 0 1em;
 }
 
 .Channel {
   text-align: center;
 }
 
-aside h3 {
-  display: inline;
-  font-weight: normal;
-  font-size: 1em;
-  margin: 0 auto;
-}
-
 /* Remove borders that touch browser-edge */
 radio4000-player .Layout {
-  border-top: 0 !important;
-  border-bottom: 0 !important;
-}
-left radio4000-player .Layout {
-  border-left: 0 !important;
-}
-right radio4000-player .Layout {
-  border-right: 0 !important;
+  border: 0 !important;
 }
