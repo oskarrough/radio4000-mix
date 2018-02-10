@@ -8,7 +8,7 @@ serve .
 open index.html
 ```
 
-If your browser does not support [`loading JavaScript modules using <script type="module">`](https://caniuse.com/#feat=es6-module), you'll have to bundle the scripts. Do that with `yarn start` for development and `yarn build` for production. It will build into the `dist` folder.
+If your browser does not support [loading JavaScript modules using `<script type="module">`](https://caniuse.com/#feat=es6-module), you'll have to bundle the scripts. Do that with `yarn start` for development and `yarn build` for production. It will build into the `dist` folder.
 
 Uses these open source projects:
 
