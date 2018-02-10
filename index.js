@@ -66,7 +66,6 @@ const deckTemplate = ({slug, vol} = {}) => html`
   <radio4000-player
     channel-slug$="${slug}"
     volume="${String(vol)}"
-    autoplay="true"
     shuffle="true"></radio4000-player>`
 
 // Start everything.
