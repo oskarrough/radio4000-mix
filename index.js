@@ -57,10 +57,10 @@ const channelsTemplate = html`
 
 const crossfaderTemplate = vol => html`
 	<button data-balloon="Fade left" data-balloon-pos="right"
-		on-click=${() => fadeTo(0)}>←</button>
+		on-click=${() => fadeTo(0)}>⇠</button>
 	<input type="range" value=${vol} on-input=${e => setVolume(e.target.value)}>
 	<button data-balloon="Fade right" data-balloon-pos="left"
-		on-click=${() => fadeTo(100)}>→</button>`
+		on-click=${() => fadeTo(100)}>⇢</button>`
 
 const deckTemplate = ({slug, vol} = {}) => html`
 	<radio4000-player
