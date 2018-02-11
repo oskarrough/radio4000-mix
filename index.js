@@ -31,8 +31,8 @@ const filterByTracks = (list, minimum = 20) =>
 	list.filter(c => c.tracks && Object.keys(c.tracks).length > minimum)
 
 const filterTemplate = html`
-	<input type="search" placeholder="Search radios…" class="fuzzy-search">
-	<button class="sort" data-sort="Channel-title">Sort by title</button>`
+	<input type="search" placeholder="Search radios…" class="fuzzy-search">`
+	// <button class="sort" data-sort="Channel-title">Sort by title</button>`
 
 const channelsTemplate = channels => html`
 	${channels.map(c => channelTemplate(c))}`
