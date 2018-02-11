@@ -5,6 +5,7 @@ import {findChannels} from './radio4000-js-sdk.js'
 const $ = document.querySelector.bind(document)
 const left = $('left')
 const main = $('main')
+const header = $('header')
 const aside = $('aside')
 const footer = $('footer')
 const right = $('right')
@@ -48,10 +49,12 @@ const channelTemplate = c => html`
 const filterByTracks = (list, minimum = 20) =>
 	list.filter(c => c.tracks && Object.keys(c.tracks).length > minimum)
 
-const channelsTemplate = html`
-	${findChannels(999)
-		.then(filterByTracks)
-		.then(c => c.map(c => channelTemplate(c)))}`
+const filterTemplate = html`
+	<input type="search" placeholder="Search radios…" class="fuzzy-search">
+	<button class="sort" data-sort="Channel-title">Sort by title</button>`
+
+const channelsTemplate = (channels) => html`
+	${channels.map(c => channelTemplate(c))}`
 
 const crossfaderTemplate = vol => html`
 	<button aria-label="Fade left" class="tooltipped tooltipped-e tooltipped-no-delay"
@@ -67,7 +70,16 @@ const deckTemplate = ({slug, vol} = {}) => html`
 		shuffle="true"></radio4000-player>`
 
 // Start everything.
-render(channelsTemplate, aside)
+findChannels()
+	.then(filterByTracks)
+	.then(channels => {
+		render(channelsTemplate(channels), aside)
+		render(filterTemplate, header)
+		const list = new List(main, {
+			valueNames: ['Channel-title'],
+			list: 'oskar'
+		})
+	})
 render(crossfaderTemplate(50), footer)
 render(deckTemplate({slug: 'nikita'}), left)
 render(deckTemplate({slug: 'radio-tobha'}), right)

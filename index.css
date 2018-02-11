@@ -29,6 +29,18 @@ body > main h3 {
 	margin: 0 0.5em;
 	flex: 1;
 }
+
+body > main header {
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+	margin: 1em;
+	font-size: 13px;
+}
+
+body > main header input[type="search"] {
+	flex: 1;
+	margin-right: 0.5em;
 }
 
 left,
@@ -61,9 +73,7 @@ radio4000-player {
 
 .Scrollable {
 	overflow: auto;
-	padding: 1em;
 	box-sizing: border-box;
-	line-height: 1.8;
 }
 
 input[type='range'] {
