@@ -40,7 +40,10 @@ const channelTemplate = c => html`
 		<button class="tooltipped tooltipped-e"
 			aria-label="Add to deck A"
 			on-click=${() => render(deckTemplate({slug: c.slug}), left)}>←</button>
-		<h3 class="Channel-title">${c.title}</h3>
+		<div class="Channel-content">
+			<h3 class="Channel-title">${c.title}</h3>
+			<small class="Channel-body">${c.body}</small>
+		</div>
 		<button class="tooltipped tooltipped-w"
 			aria-label="Add to deck B" 
 			on-click=${() => render(deckTemplate({slug: c.slug}), right)}>→</button>
