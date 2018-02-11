@@ -36,12 +36,12 @@ function fadeTo(to) {
 
 const channelTemplate = c => html`
 	<div class="Channel">
-		<button
-			data-balloon="Add to deck A" data-balloon-pos="left"
+		<button class="tooltipped tooltipped-e"
+			aria-label="Add to deck A"
 			on-click=${() => render(deckTemplate({slug: c.slug}), left)}>←</button>
-		<h3>${c.title}</h3>
-		<button
-			data-balloon="Add to deck B" data-balloon-pos="right"
+		<h3 class="Channel-title">${c.title}</h3>
+		<button class="tooltipped tooltipped-w"
+			aria-label="Add to deck B" 
 			on-click=${() => render(deckTemplate({slug: c.slug}), right)}>→</button>
 	</div>`
 
@@ -54,10 +54,10 @@ const channelsTemplate = html`
 		.then(c => c.map(c => channelTemplate(c)))}`
 
 const crossfaderTemplate = vol => html`
-	<button data-balloon="Fade left" data-balloon-pos="right"
+	<button aria-label="Fade left" class="tooltipped tooltipped-e tooltipped-no-delay"
 		on-click=${() => fadeTo(0)}>⇠</button>
 	<input type="range" value=${vol} on-input=${e => setVolume(e.target.value)}>
-	<button data-balloon="Fade right" data-balloon-pos="left"
+	<button aria-label="Fade right" class="tooltipped tooltipped-w tooltipped-no-delay"
 		on-click=${() => fadeTo(100)}>⇢</button>`
 
 const deckTemplate = ({slug, vol} = {}) => html`
