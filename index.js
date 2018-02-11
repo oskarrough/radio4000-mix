@@ -9,6 +9,11 @@ const aside = $('aside')
 const footer = $('footer')
 const right = $('right')
 
+// Poor-man's query params. Only works on initial load for now.
+const params = new URL(document.location).searchParams
+const a = params.get('a') || 'nikita'
+const b = params.get('b') || 'radio-tobha'
+
 const deckTemplate = ({slug, vol} = {}) => html`
 	<radio4000-player
 		channel-slug$="${slug}"
@@ -32,7 +37,7 @@ const filterByTracks = (list, minimum = 20) =>
 
 const filterTemplate = html`
 	<input type="search" placeholder="Search radios…" class="fuzzy-search">`
-	// <button class="sort" data-sort="Channel-title">Sort by title</button>`
+// <button class="sort" data-sort="Channel-title">Sort by title</button>`
 
 const channelsTemplate = channels => html`
 	${channels.map(c => channelTemplate(c))}`
@@ -69,8 +74,8 @@ function fadeTo(to) {
 
 // Start everything.
 render(crossfaderTemplate(50, setVolume), footer)
-render(deckTemplate({slug: 'nikita'}), left)
-render(deckTemplate({slug: 'radio-tobha'}), right)
+render(deckTemplate({slug: a}), left)
+render(deckTemplate({slug: b}), right)
 findChannels()
 	.then(filterByTracks)
 	.then(channels => {
