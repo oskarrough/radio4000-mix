@@ -56,7 +56,7 @@ const filterTemplate = html`
 	<input type="search" placeholder="Search radios…" class="fuzzy-search">
 	<button class="sort" data-sort="Channel-title">Sort by title</button>`
 
-const channelsTemplate = (channels) => html`
+const channelsTemplate = channels => html`
 	${channels.map(c => channelTemplate(c))}`
 
 const crossfaderTemplate = vol => html`
@@ -86,4 +86,3 @@ findChannels()
 			valueNames: ['Channel-title', 'Channel-body']
 		})
 	})
-

@@ -1,18 +1,16 @@
 html,
 body {
-  height: 100%;
+	height: 100%;
 }
 
 body {
-  margin: 0;
-  overflow: hidden;
-  display: flex;
-  background-image: linear-gradient(
-    to bottom,
-    hsl(0, 0%, 90%),
-    hsl(0, 0%, 82%)
-  );
-  flex-flow: row nowrap;
+	margin: 0;
+	overflow: hidden;
+	background-image: linear-gradient(
+		to bottom,
+		hsl(0, 0%, 90%),
+		hsl(0, 0%, 82%)
+	);
 }
 
 /* consistent typeface */
@@ -20,21 +18,36 @@ html,
 html radio4000-player,
 input,
 button {
-  font-family: 'nanum gothic coding', serif;
+	font-family: 'nanum gothic coding', serif;
 }
 
-body > main {
-  display: flex;
-  flex-flow: nowrap column;
-  font-size: 14px;
-  overflow: hidden;
-  flex: 1;
+radio4000-mix {
+	display: flex;
+	height: 100%;
 }
 
-body > main header {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
+left,
+right {
+	overflow: hidden;
+	flex: 1;
+	display: flex;
+	background: #f5f5f5;
+}
+
+radio4000-mix > main {
+	flex: 1;
+	display: flex;
+	flex-flow: nowrap column;
+	font-size: 14px;
+	overflow: hidden;
+	border-right: 1px solid #b3b3b3;
+	border-left: 1px solid #b3b3b3;
+}
+
+radio4000-mix > main header {
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
 	padding: 1em;
 	min-height: 1.4em;
 	font-size: 13px;
@@ -43,114 +56,97 @@ body > main header {
 	box-shadow: 1px 1px 3px hsla(0, 0%, 0%, 0.2);
 }
 
-main header input[type='search'] {
+radio4000-mix input[type='search'] {
 	border-radius: 3px;
 	border: 1px solid #333;
-  flex: 1;
-  margin-right: 0.5em;
+	flex: 1;
+	margin-right: 0.5em;
 }
 
-left,
-right {
-  background: #f5f5f5;
-  /* flex-shrink: 0; */
-  /* flex: 200px; */
-  overflow: hidden;
-  /* width: 50%; */
-  flex: 1;
+radio4000-mix > main footer {
+	margin-top: auto;
+	flex-shrink: 0;
+	border-top: 1px solid #b3b3b3;
+	background: hsl(0, 0%, 96%);
+	display: flex;
+	padding: 1em;
+	box-sizing: border-box;
 }
 
-left {
-  border-right: 1px solid #b3b3b3;
-}
-
-right {
-  border-left: 1px solid #b3b3b3;
-}
-
-body > main footer {
-  margin-top: auto;
-  flex-shrink: 0;
-  border-top: 1px solid #b3b3b3;
-  background: hsl(0, 0%, 96%);
-  display: flex;
-  padding: 1em;
-  box-sizing: border-box;
+input[type='range'] {
+	flex: 1;
+	margin: 0 1em;
 }
 
 radio4000-player {
-  height: auto !important;
+	height: auto !important;
 }
 
-body > main footer,
+radio4000-mix > main footer,
 radio4000-player .Layout-footer,
 radio4000-player .PlayerControl {
 	min-height: 62px !important;
 }
 
 .Scrollable {
-  overflow: auto;
-}
-
-input[type='range'] {
-  flex: 1;
-  margin: 0 1em;
+	overflow: auto;
 }
 
 .Channel {
-  display: flex;
-  padding: 0.3em 1em;
-  position: relative;
-  align-items: center;
+	display: flex;
+	padding: 0.3em 1em;
+	position: relative;
+	align-items: center;
 }
 
 .Channel-content {
-  flex: 1;
-  margin: 0 1rem;
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-flow: column;
+	flex: 1;
+	margin: 0 1rem;
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-flow: column;
 }
 
 .Channel-title {
-  display: inline-table;
-  font-size: 1em;
-  margin: 0;
-  background: white;
-  padding: 0 0.2em;
-  /* font-weight: normal; */
+	display: inline-table;
+	font-size: 1em;
+	margin: 0;
+	background: white;
+	padding: 0 0.2em;
+	/* font-weight: normal; */
 }
 
 .Channel-body {
-  padding: 0 0.2em;
-  background: white;
-  display: inline-table;
+	padding: 0 0.2em;
+	background: white;
+	display: inline-table;
 }
 
 .Channel button {
-  align-self: center;
-  padding: 1em;
+	align-self: center;
+	padding: 1em;
 }
 
 .Channel::after {
-  content: '';
-  height: 1px;
-  left: 3.4em;
-  position: absolute;
-  margin-top: auto;
-  right: 3.4em;
-  background-image: linear-gradient(to right, #333, transparent, #333);
+	content: '';
+	height: 1px;
+	left: 3.5em;
+	position: absolute;
+	margin-top: auto;
+	right: 3.5em;
+	background-image: linear-gradient(to right, #333, transparent, #333);
 }
 
 /* Remove borders that touch browser-edge */
 radio4000-player .Layout {
-  border: 0 !important;
+	border: 0 !important;
 }
 
-body > main button {
-  border-radius: 0.4em;
-  background: #fff;
-  border: 1px solid;
-  border-color: hsl(0, 0%, 20%);
+radio4000-mix > main button {
+	min-width: 3.3em;
+	border-radius: 0.4em;
+	background: #fff;
+	border: 1px solid;
+	border-color: hsl(0, 0%, 20%);
 }
