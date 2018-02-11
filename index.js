@@ -27,7 +27,7 @@ function fadeTo(to) {
 	const step = () => {
 		const doneFading = vol === to
 		if (doneFading) return cancelAnimationFrame(frame)
-		vol = from > to ? vol - 1 : vol + 1 // go up or down
+		vol = vol > to ? vol - 1 : vol + 1 // go up or down
 		setVolume(vol)
 		frame = requestAnimationFrame(step) // run again
 	}
