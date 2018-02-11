@@ -4,28 +4,31 @@ body {
 }
 
 body {
+	margin: 0;
+	overflow: hidden;
+	display: flex;
+	font-family: Maison Neue, maisonneue, system-ui, sans-serif;
 	background-image: linear-gradient(
 	to bottom,
 	hsl(0, 0%, 90%),
 	hsl(0, 0%, 82%)
 	);
-	display: flex;
-	margin: 0;
-	overflow: hidden;
-	font-family: Maison Neue, maisonneue, system-ui, sans-serif;
 }
 
-main {
+body > main {
 	flex: 1;
 	display: flex;
 	flex-flow: nowrap column;
+	font-size: 14px;
 }
 
-main h3 {
+body > main h3 {
 	display: inline;
 	font-weight: normal;
 	font-size: 1em;
-	margin: 0 auto;
+	margin: 0 0.5em;
+	flex: 1;
+}
 }
 
 left,
@@ -43,7 +46,7 @@ right {
 	border-left: 1px solid #b3b3b3;
 }
 
-footer {
+body > main footer {
 	margin-top: auto;
 	flex-shrink: 0;
 	border-top: 1px solid #b3b3b3;
@@ -69,10 +72,23 @@ input[type='range'] {
 }
 
 .Channel {
+	display: flex;
 	text-align: center;
+	padding: 0.3em 1em;
+}
+
+.Channel button {
+	align-self: center;
 }
 
 /* Remove borders that touch browser-edge */
 radio4000-player .Layout {
 	border: 0 !important;
 }
+ 
+button {
+	border-radius: 0.4em;
+	background: #fff;
+	border: 1px solid;
+	border-color: hsl(0, 0%, 20%);
+} 
