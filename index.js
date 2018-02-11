@@ -73,16 +73,17 @@ const deckTemplate = ({slug, vol} = {}) => html`
 		shuffle="true"></radio4000-player>`
 
 // Start everything.
+render(crossfaderTemplate(50), footer)
+render(deckTemplate({slug: 'nikita'}), left)
+render(deckTemplate({slug: 'radio-tobha'}), right)
+
 findChannels()
 	.then(filterByTracks)
 	.then(channels => {
 		render(channelsTemplate(channels), aside)
 		render(filterTemplate, header)
 		const list = new List(main, {
-			valueNames: ['Channel-title'],
-			list: 'oskar'
+			valueNames: ['Channel-title', 'Channel-body']
 		})
 	})
-render(crossfaderTemplate(50), footer)
-render(deckTemplate({slug: 'nikita'}), left)
-render(deckTemplate({slug: 'radio-tobha'}), right)
+

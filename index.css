@@ -12,6 +12,7 @@ body {
     hsl(0, 0%, 90%),
     hsl(0, 0%, 82%)
   );
+  flex-flow: row nowrap;
 }
 
 /* consistent typeface */
@@ -23,30 +24,40 @@ button {
 }
 
 body > main {
-  flex: 1;
   display: flex;
   flex-flow: nowrap column;
   font-size: 14px;
+  overflow: hidden;
+  flex: 1;
 }
 
 body > main header {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  margin: 1em;
-  font-size: 13px;
+	padding: 1em;
+	min-height: 1.4em;
+	font-size: 13px;
+	border-bottom: 1px solid #b3b3b3;
+	background-color: hsl(0, 0%, 96%);
+	box-shadow: 1px 1px 3px hsla(0, 0%, 0%, 0.2);
 }
 
 main header input[type='search'] {
+	border-radius: 3px;
+	border: 1px solid #333;
   flex: 1;
   margin-right: 0.5em;
 }
 
 left,
 right {
-  flex: 1;
-  display: flex;
   background: #f5f5f5;
+  /* flex-shrink: 0; */
+  /* flex: 200px; */
+  overflow: hidden;
+  /* width: 50%; */
+  flex: 1;
 }
 
 left {
@@ -61,18 +72,24 @@ body > main footer {
   margin-top: auto;
   flex-shrink: 0;
   border-top: 1px solid #b3b3b3;
-  background: hsl(0, 0%, 90%);
+  background: hsl(0, 0%, 96%);
   display: flex;
-  padding: 1.5em;
+  padding: 1em;
+  box-sizing: border-box;
 }
 
 radio4000-player {
   height: auto !important;
 }
 
+body > main footer,
+radio4000-player .Layout-footer,
+radio4000-player .PlayerControl {
+	min-height: 62px !important;
+}
+
 .Scrollable {
   overflow: auto;
-  box-sizing: border-box;
 }
 
 input[type='range'] {
@@ -131,7 +148,7 @@ radio4000-player .Layout {
   border: 0 !important;
 }
 
-button {
+body > main button {
   border-radius: 0.4em;
   background: #fff;
   border: 1px solid;
