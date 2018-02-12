@@ -1,5 +1,6 @@
 import {html, render} from './node_modules/lit-html/lib/lit-extended.js'
 import findChannels from './find-channels.js'
+import {tweenValue} from './utils.js'
 
 const $ = document.querySelector.bind(document)
 
@@ -49,20 +50,10 @@ const setVolume = vol => {
 	render(deckTemplate({vol}), right)
 }
 
-// Tween the volume from its current value
-let f
-function fadeTo(to) {
-	if (f) cancelAnimationFrame(f) // Cancel previous animation if already running
-	let vol = Number($('input[type="range"]').value)
-	const step = () => {
-		const doneFading = vol === to
-		if (doneFading) return cancelAnimationFrame(f)
-		vol = vol > to ? vol - 1 : vol + 1
-		setVolume(vol)
-		f = requestAnimationFrame(step)
-	}
-	f = requestAnimationFrame(step)
-}
+// Shortcut for fading volume
+const fadeTo = (to, from = Number($('input[type="range"]').value)) =>
+	tweenValue(from, to, setVolume)
+
 // Get query params
 const params = new URL(document.location).searchParams
 
