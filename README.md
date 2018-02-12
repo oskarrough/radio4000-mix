@@ -17,3 +17,9 @@ Uses these open source projects:
 - https://github.com/internet4000/radio4000-js-sdk/
 - https://github.com/polymer/lit-html/
 - https://www.jsdelivr.com/
+
+## Browser support
+
+- Chrome + Safari
+- Firefox with "module scripts" enabled (Tip: go to `about:config` to find and enable it)
+- Edge doesn't work
