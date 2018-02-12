@@ -1,18 +1,12 @@
 import {html, render} from './node_modules/lit-html/lib/lit-extended.js'
 import findChannels from './find-channels.js'
+import {tweenValue} from './utils.js'
 
 const $ = document.querySelector.bind(document)
-const left = $('left')
-const main = $('main')
-const header = $('header')
-const aside = $('aside')
-const footer = $('footer')
-const right = $('right')
 
-// Poor-man's query params. Only works on initial load for now.
-const params = new URL(document.location).searchParams
-const a = params.get('a') || 'nikita'
-const b = params.get('b') || 'radio-tobha'
+const left = $('left')
+const right = $('right')
+const footer = $('crossfader')
 
 const deckTemplate = ({slug, vol} = {}) => html`
 	<radio4000-player
@@ -20,16 +14,16 @@ const deckTemplate = ({slug, vol} = {}) => html`
 		volume="${String(vol)}"
 		shuffle="true"></radio4000-player>`
 
-const channelTemplate = c => html`
+const channelTemplate = ({title, body, slug} = {}) => html`
 	<div class="Channel">
 		<button class="tooltipped tooltipped-e" aria-label="Add to deck A"
-			on-click=${() => render(deckTemplate({slug: c.slug}), left)}>←</button>
+			on-click=${() => render(deckTemplate({slug}), left)}>←</button>
 		<div class="Channel-content">
-			<h3 class="Channel-title">${c.title}</h3>
-			<small class="Channel-body">${c.body}</small>
+			<h3 class="Channel-title">${title}</h3>
+			<small class="Channel-body">${body}</small>
 		</div>
 		<button class="tooltipped tooltipped-w" aria-label="Add to deck B" 
-			on-click=${() => render(deckTemplate({slug: c.slug}), right)}>→</button>
+			on-click=${() => render(deckTemplate({slug}), right)}>→</button>
 	</div>`
 
 const filterByTracks = (list, minimum = 20) =>
@@ -37,7 +31,6 @@ const filterByTracks = (list, minimum = 20) =>
 
 const filterTemplate = html`
 	<input type="search" placeholder="Search radios…" class="fuzzy-search">`
-// <button class="sort" data-sort="Channel-title">Sort by title</button>`
 
 const channelsTemplate = channels => html`
 	${channels.map(c => channelTemplate(c))}`
@@ -45,11 +38,11 @@ const channelsTemplate = channels => html`
 const crossfaderTemplate = (vol, update) => html`
 	<button class="tooltipped tooltipped-e tooltipped-no-delay" aria-label="Fade left"
 		on-click=${() => fadeTo(0)}>⇠</button>
-	<input type="range" value=${vol} on-input=${e => update(e.target.value)}>
+	<input type="range" value=${vol}
+		on-input=${e => update(e.target.value)}>
 	<button class="tooltipped tooltipped-w tooltipped-no-delay" aria-label="Fade right"
 		on-click=${() => fadeTo(100)}>⇢</button>`
 
-// Runs whenever you change the crossfader.
 const setVolume = vol => {
 	vol = Number(vol)
 	render(deckTemplate({vol: 100 - vol}), left)
@@ -57,32 +50,20 @@ const setVolume = vol => {
 	render(deckTemplate({vol}), right)
 }
 
-// Tween the volume from its current value
-let f
-function fadeTo(to) {
-	if (f) cancelAnimationFrame(f) // Cancel previous animation if already running
-	let vol = Number($('input[type="range"]').value)
-	const step = () => {
-		const doneFading = vol === to
-		if (doneFading) return cancelAnimationFrame(f)
-		vol = vol > to ? vol - 1 : vol + 1
-		setVolume(vol)
-		f = requestAnimationFrame(step)
-	}
-	f = requestAnimationFrame(step)
-}
+// Shortcut for fading volume
+const fadeTo = (to, from = Number($('input[type="range"]').value)) =>
+	tweenValue(from, to, setVolume)
 
-// Start everything.
-render(crossfaderTemplate(50, setVolume), footer)
-render(deckTemplate({slug: a}), left)
-render(deckTemplate({slug: b}), right)
+// Get query params
+const params = new URL(document.location).searchParams
+
+render(crossfaderTemplate(50, setVolume), $('crossfader'))
+render(deckTemplate({slug: params.get('a') || 'nikita'}), left)
+render(deckTemplate({slug: params.get('b') || 'radio-tobha'}), right)
 findChannels()
 	.then(filterByTracks)
 	.then(channels => {
-		render(channelsTemplate(channels), aside)
-		render(filterTemplate, header)
-		// Enable search and sorting.
-		const list = new List(main, {
-			valueNames: ['Channel-title', 'Channel-body']
-		})
+		render(channelsTemplate(channels), $('aside'))
+		render(filterTemplate, $('filter'))
+		let list = List($('main'), {valueNames: ['Channel-title', 'Channel-body']})
 	})
