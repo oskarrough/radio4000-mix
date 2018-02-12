@@ -20,16 +20,16 @@ const deckTemplate = ({slug, vol} = {}) => html`
 		volume="${String(vol)}"
 		shuffle="true"></radio4000-player>`
 
-const channelTemplate = c => html`
+const channelTemplate = ({title, body, slug} = {}) => html`
 	<div class="Channel">
 		<button class="tooltipped tooltipped-e" aria-label="Add to deck A"
-			on-click=${() => render(deckTemplate({slug: c.slug}), left)}>←</button>
+			on-click=${() => render(deckTemplate({slug}), left)}>←</button>
 		<div class="Channel-content">
-			<h3 class="Channel-title">${c.title}</h3>
-			<small class="Channel-body">${c.body}</small>
+			<h3 class="Channel-title">${title}</h3>
+			<small class="Channel-body">${body}</small>
 		</div>
 		<button class="tooltipped tooltipped-w" aria-label="Add to deck B" 
-			on-click=${() => render(deckTemplate({slug: c.slug}), right)}>→</button>
+			on-click=${() => render(deckTemplate({slug}), right)}>→</button>
 	</div>`
 
 const filterByTracks = (list, minimum = 20) =>
@@ -37,7 +37,6 @@ const filterByTracks = (list, minimum = 20) =>
 
 const filterTemplate = html`
 	<input type="search" placeholder="Search radios…" class="fuzzy-search">`
-// <button class="sort" data-sort="Channel-title">Sort by title</button>`
 
 const channelsTemplate = channels => html`
 	${channels.map(c => channelTemplate(c))}`
@@ -45,11 +44,11 @@ const channelsTemplate = channels => html`
 const crossfaderTemplate = (vol, update) => html`
 	<button class="tooltipped tooltipped-e tooltipped-no-delay" aria-label="Fade left"
 		on-click=${() => fadeTo(0)}>⇠</button>
-	<input type="range" value=${vol} on-input=${e => update(e.target.value)}>
+	<input type="range" value=${vol}
+		on-input=${e => update(e.target.value)}>
 	<button class="tooltipped tooltipped-w tooltipped-no-delay" aria-label="Fade right"
 		on-click=${() => fadeTo(100)}>⇢</button>`
 
-// Runs whenever you change the crossfader.
 const setVolume = vol => {
 	vol = Number(vol)
 	render(deckTemplate({vol: 100 - vol}), left)
