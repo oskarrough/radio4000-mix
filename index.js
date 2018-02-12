@@ -2,17 +2,10 @@ import {html, render} from './node_modules/lit-html/lib/lit-extended.js'
 import findChannels from './find-channels.js'
 
 const $ = document.querySelector.bind(document)
-const left = $('left')
-const main = $('main')
-const header = $('header')
-const aside = $('aside')
-const footer = $('footer')
-const right = $('right')
 
-// Poor-man's query params. Only works on initial load for now.
-const params = new URL(document.location).searchParams
-const a = params.get('a') || 'nikita'
-const b = params.get('b') || 'radio-tobha'
+const left = $('left')
+const right = $('right')
+const footer = $('crossfader')
 
 const deckTemplate = ({slug, vol} = {}) => html`
 	<radio4000-player
@@ -70,18 +63,16 @@ function fadeTo(to) {
 	}
 	f = requestAnimationFrame(step)
 }
+// Get query params
+const params = new URL(document.location).searchParams
 
-// Start everything.
-render(crossfaderTemplate(50, setVolume), footer)
-render(deckTemplate({slug: a}), left)
-render(deckTemplate({slug: b}), right)
+render(crossfaderTemplate(50, setVolume), $('crossfader'))
+render(deckTemplate({slug: params.get('a') || 'nikita'}), left)
+render(deckTemplate({slug: params.get('b') || 'radio-tobha'}), right)
 findChannels()
 	.then(filterByTracks)
 	.then(channels => {
-		render(channelsTemplate(channels), aside)
-		render(filterTemplate, header)
-		// Enable search and sorting.
-		const list = new List(main, {
-			valueNames: ['Channel-title', 'Channel-body']
-		})
+		render(channelsTemplate(channels), $('aside'))
+		render(filterTemplate, $('filter'))
+		let list = List($('main'), {valueNames: ['Channel-title', 'Channel-body']})
 	})

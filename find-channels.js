@@ -1,6 +1,7 @@
+// Helpers to make it easier to work with the Radio4000 Firebase database.
+
 const host = 'https://radio4000.firebaseio.com'
 
-// Helpers to make it easier to work with the Radio4000 Firebase database.
 const fetchAndParse = url =>
 	fetch(url)
 		.then(res => res.json())

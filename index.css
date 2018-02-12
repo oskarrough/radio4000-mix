@@ -43,7 +43,7 @@ radio4000-mix > main {
 	border-left: 1px solid #b3b3b3;
 }
 
-radio4000-mix > main header {
+filter {
 	display: flex;
 	flex-shrink: 0;
 	min-height: 2.6em;
@@ -61,7 +61,7 @@ radio4000-mix input[type='search'] {
 	box-shadow: inset 0px 2px 4px #00000040;
 }
 
-radio4000-mix > main footer {
+crossfader {
 	margin-top: auto;
 	flex-shrink: 0;
 	border-top: 1px solid #b3b3b3;
@@ -80,7 +80,7 @@ radio4000-player {
 	height: auto !important;
 }
 
-radio4000-mix > main footer,
+crossfader,
 radio4000-player .Layout-footer,
 radio4000-player .PlayerControl {
 	min-height: 62px !important;
