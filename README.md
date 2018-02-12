@@ -1,3 +1,5 @@
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Foskarrough%2Fradio4000-mix.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Foskarrough%2Fradio4000-mix?ref=badge_shield)
+
 Forked from https://github.com/internet4000/radio4000-mix. Rewritten to try out different techniques.
 
 This project does not require a build system. Start any web server in this folder to try.
@@ -17,3 +19,7 @@ Uses these open source projects:
 - https://github.com/internet4000/radio4000-js-sdk/
 - https://github.com/polymer/lit-html/
 - https://www.jsdelivr.com/
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Foskarrough%2Fradio4000-mix.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Foskarrough%2Fradio4000-mix?ref=badge_large)
