@@ -44,7 +44,7 @@ const crossfaderTpl = (vol, update) => html`
 const setVolume = vol => {
 	vol = Number(vol)
 	render(deckTpl({vol: 100 - vol}), left)
-	render(crossfaderTpl(vol), footer)
+	render(crossfaderTpl(vol, setVolume), footer)
 	render(deckTpl({vol}), right)
 }
 
