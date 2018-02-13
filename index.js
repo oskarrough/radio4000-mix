@@ -3,39 +3,37 @@ import findChannels from './find-channels.js'
 import {tweenValue} from './utils.js'
 
 const $ = document.querySelector.bind(document)
-
 const left = $('left')
 const right = $('right')
 const footer = $('crossfader')
 
-const deckTemplate = ({slug, vol} = {}) => html`
+const deckTpl = ({slug, vol} = {}) => html`
 	<radio4000-player
 		channel-slug$="${slug}"
 		volume="${String(vol)}"
 		shuffle="true"></radio4000-player>`
 
-const channelTemplate = ({title, body, slug} = {}) => html`
+const channelTpl = ({title, body, slug} = {}) => html`
 	<div class="Channel">
 		<button class="tooltipped tooltipped-e" aria-label="Add to deck A"
-			on-click=${() => render(deckTemplate({slug}), left)}>←</button>
+			on-click=${() => render(deckTpl({slug}), left)}>←</button>
 		<div class="Channel-content">
 			<h3 class="Channel-title">${title}</h3>
 			<small class="Channel-body">${body}</small>
 		</div>
-		<button class="tooltipped tooltipped-w" aria-label="Add to deck B" 
-			on-click=${() => render(deckTemplate({slug}), right)}>→</button>
+		<button class="tooltipped tooltipped-w" aria-label="Add to deck B"
+			on-click=${() => render(deckTpl({slug}), right)}>→</button>
 	</div>`
 
-const filterByTracks = (list, minimum = 20) =>
-	list.filter(c => c.tracks && Object.keys(c.tracks).length > minimum)
-
-const filterTemplate = html`
+const searchTpl = html`
 	<input type="search" placeholder="Search radios…" class="fuzzy-search">`
 
-const channelsTemplate = channels => html`
-	${channels.map(c => channelTemplate(c))}`
+const channelsTpl = channels => html`
+	${channels
+		.filter(c => c.tracks && Object.keys(c.tracks).length > 20)
+		.map(c => channelTpl(c))}`
 
-const crossfaderTemplate = (vol, update) => html`
+const crossfaderTpl = (vol, update) => html`
 	<button class="tooltipped tooltipped-e tooltipped-no-delay" aria-label="Fade left"
 		on-click=${() => fadeTo(0)}>⇠</button>
 	<input type="range" value=${vol}
@@ -45,25 +43,24 @@ const crossfaderTemplate = (vol, update) => html`
 
 const setVolume = vol => {
 	vol = Number(vol)
-	render(deckTemplate({vol: 100 - vol}), left)
-	render(crossfaderTemplate(vol), footer)
-	render(deckTemplate({vol}), right)
+	render(deckTpl({vol: 100 - vol}), left)
+	render(crossfaderTpl(vol), footer)
+	render(deckTpl({vol}), right)
 }
 
 // Shortcut for fading volume
 const fadeTo = (to, from = Number($('input[type="range"]').value)) =>
 	tweenValue(from, to, setVolume)
 
-// Get query params
-const params = new URL(document.location).searchParams
+// Start initial render
+const queryParams = new URL(document.location).searchParams
+render(deckTpl({slug: queryParams.get('a') || 'nikita'}), left)
+render(deckTpl({slug: queryParams.get('b') || 'radio-tobha'}), right)
+render(crossfaderTpl(50, setVolume), $('crossfader'))
 
-render(crossfaderTemplate(50, setVolume), $('crossfader'))
-render(deckTemplate({slug: params.get('a') || 'nikita'}), left)
-render(deckTemplate({slug: params.get('b') || 'radio-tobha'}), right)
-findChannels()
-	.then(filterByTracks)
-	.then(channels => {
-		render(channelsTemplate(channels), $('aside'))
-		render(filterTemplate, $('filter'))
-		let list = List($('main'), {valueNames: ['Channel-title', 'Channel-body']})
-	})
+findChannels().then(channels => {
+	render(channelsTpl(channels), $('aside'))
+	render(searchTpl, $('filter'))
+	// Enable search with list.js
+	let list = List($('main'), {valueNames: ['Channel-title', 'Channel-body']})
+})
