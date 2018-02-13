@@ -113,13 +113,14 @@ radio4000-player .PlayerControl {
 	margin: 0;
 	background: white;
 	padding: 0 0.2em;
-	/* font-weight: normal; */
+	word-break: break-all;
 }
 
 .Channel-body {
 	padding: 0 0.2em;
 	background: white;
 	display: inline-table;
+	word-break: break-word;
 }
 
 .Channel button {
