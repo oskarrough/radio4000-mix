@@ -1,6 +1,7 @@
 import {html, render} from './node_modules/lit-html/lib/lit-extended.js'
 import findChannels from './find-channels.js'
 import {tweenValue} from './utils.js'
+import {Gridnav} from './gridnav.js'
 
 const $ = document.querySelector.bind(document)
 const left = $('left')
@@ -63,4 +64,6 @@ findChannels().then(channels => {
 	render(searchTpl, $('filter'))
 	// Enable search with list.js
 	let list = List($('main'), {valueNames: ['Channel-title', 'Channel-body']})
+
+	var buttonlist = new Gridnav('.list')
 })
