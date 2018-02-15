@@ -52,7 +52,7 @@ filter {
 	box-shadow: 1px 1px 3px hsla(0, 0%, 0%, 0.2);
 }
 
-radio4000-mix input[type='search'] {
+filter input[type='search'] {
 	border: none;
 	flex: 1;
 	height: 2.6em;
@@ -71,7 +71,7 @@ crossfader {
 	box-sizing: border-box;
 }
 
-input[type='range'] {
+crossfader input[type='range'] {
 	flex: 1;
 	margin: 0 1em;
 }
@@ -138,6 +138,7 @@ radio4000-player .PlayerControl {
 	margin-top: auto;
 	right: 2.7em;
 	background-image: linear-gradient(to right, #333, transparent, #333);
+	pointer-events: none;
 }
 
 /* Remove borders that touch browser-edge */
@@ -150,9 +151,12 @@ radio4000-mix > main button {
 	background: hsl(0, 0%, 90%);
 	border: 1px solid;
 	border-color: hsl(0, 0%, 20%);
+	transition: all 200ms;
 }
 
 radio4000-mix > main button:hover,
 radio4000-mix > main button:focus {
 	background: white;
+	outline: none;
+	box-shadow: 0px 0px 10px blue;
 }

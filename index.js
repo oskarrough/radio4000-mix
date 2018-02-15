@@ -54,9 +54,9 @@ const fadeTo = (to, from = Number($('input[type="range"]').value)) =>
 
 // Start initial render
 const queryParams = new URL(document.location).searchParams
-render(deckTpl({slug: queryParams.get('a') || 'nikita'}), left)
-render(deckTpl({slug: queryParams.get('b') || 'radio-tobha'}), right)
 render(crossfaderTpl(50, setVolume), $('crossfader'))
+render(deckTpl({slug: queryParams.get('a') || '200ok'}), left)
+render(deckTpl({slug: queryParams.get('b') || 'nomads'}), right)
 
 findChannels().then(channels => {
 	render(channelsTpl(channels), $('aside'))
