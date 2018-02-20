@@ -1,5 +1,5 @@
 import {html, render} from './node_modules/lit-html/lib/lit-extended.js'
-import findChannels from './find-channels.js'
+import {findChannels} from './node_modules/radio4000-sdk/dist/radio4000-sdk.es.js'
 import {tweenValue} from './utils.js'
 
 const $ = document.querySelector.bind(document)
