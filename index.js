@@ -1,5 +1,6 @@
-import {html, render} from './node_modules/lit-html/lib/lit-extended.js'
 import {findChannels} from './node_modules/radio4000-sdk/dist/radio4000-sdk.es.js'
+import html from './node_modules/nanohtml/index.js'
+import raw from './node_modules/nanohtml/raw.js'
 import {tweenValue} from './utils.js'
 
 const $ = document.querySelector.bind(document)
@@ -7,39 +8,48 @@ const left = $('left')
 const right = $('right')
 const footer = $('crossfader')
 
+function render(el, container) {
+	container.appendChild(el)
+}
+
 const deckTpl = ({slug, vol} = {}) => html`
 	<radio4000-player
-		channel-slug$="${slug}"
+		channel-slug="${slug}"
 		volume="${String(vol)}"
 		shuffle="true"></radio4000-player>`
+
+const searchTpl = html`
+	<input type="search" placeholder="Search radios…" class="fuzzy-search">`
 
 const channelTpl = ({title, body, slug} = {}) => html`
 	<div class="Channel">
 		<button class="tooltipped tooltipped-e" aria-label="Add to deck A"
-			on-click=${() => render(deckTpl({slug}), left)}>←</button>
+			onclick=${() => render(deckTpl({slug}), left)}>←</button>
 		<div class="Channel-content">
 			<h3 class="Channel-title">${title}</h3>
 			<small class="Channel-body">${body}</small>
 		</div>
 		<button class="tooltipped tooltipped-w" aria-label="Add to deck B"
-			on-click=${() => render(deckTpl({slug}), right)}>→</button>
+			onclick=${() => render(deckTpl({slug}), right)}>→</button>
 	</div>`
 
-const searchTpl = html`
-	<input type="search" placeholder="Search radios…" class="fuzzy-search">`
-
-const channelsTpl = channels => html`
-	${channels
-		.filter(c => c.tracks && Object.keys(c.tracks).length > 20)
-		.map(c => channelTpl(c))}`
+const channelsTpl = channels => {
+	return html`
+		${channels
+			.filter(c => c.tracks && Object.keys(c.tracks).length > 20)
+			.map(c => render(channelTpl(c), $('aside')))
+	}`
+}
 
 const crossfaderTpl = (vol, update) => html`
-	<button class="tooltipped tooltipped-e tooltipped-no-delay" aria-label="Fade left"
-		on-click=${() => fadeTo(0)}>⇠</button>
-	<input type="range" value=${vol}
-		on-input=${e => update(e.target.value)}>
-	<button class="tooltipped tooltipped-w tooltipped-no-delay" aria-label="Fade right"
-		on-click=${() => fadeTo(100)}>⇢</button>`
+	<crossfader>
+		<button class="tooltipped tooltipped-e tooltipped-no-delay" aria-label="Fade left"
+			onclick=${() => fadeTo(0)}>⇠</button>
+		<input type="range" value=${vol}
+			on-input=${e => update(e.target.value)}>
+		<button class="tooltipped tooltipped-w tooltipped-no-delay" aria-label="Fade right"
+			onclick=${() => fadeTo(100)}>⇢</button>
+	</crossfader>`
 
 const setVolume = vol => {
 	vol = Number(vol)
@@ -52,15 +62,20 @@ const setVolume = vol => {
 const fadeTo = (to, from = Number($('input[type="range"]').value)) =>
 	tweenValue(from, to, setVolume)
 
-// Start initial render
-const queryParams = new URL(document.location).searchParams
-render(crossfaderTpl(50, setVolume), $('crossfader'))
-render(deckTpl({slug: queryParams.get('a') || '200ok'}), left)
-render(deckTpl({slug: queryParams.get('b') || 'nomads'}), right)
+function start() {
+	const queryParams = new URL(document.location).searchParams
 
-findChannels().then(channels => {
-	render(channelsTpl(channels), $('aside'))
-	render(searchTpl, $('filter'))
-	// Enable search with list.js
-	let list = List($('main'), {valueNames: ['Channel-title', 'Channel-body']})
-})
+	render(crossfaderTpl(50, setVolume), $('main'))
+	render(deckTpl({slug: queryParams.get('a') || '200ok'}), left)
+	render(deckTpl({slug: queryParams.get('b') || 'nomads'}), right)
+
+	findChannels().then(channels => {
+		render(channelsTpl(channels), $('aside'))
+		render(searchTpl, $('filter'))
+
+		// Enable search with list.js
+		let list = List($('main'), {valueNames: ['Channel-title', 'Channel-body']})
+	})
+}
+
+start()
