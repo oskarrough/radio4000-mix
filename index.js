@@ -1,6 +1,5 @@
 import {findChannels} from './node_modules/radio4000-sdk/dist/radio4000-sdk.es.js'
 import html from './node_modules/nanohtml/index.js'
-import raw from './node_modules/nanohtml/raw.js'
 import {tweenValue} from './utils.js'
 
 const $ = document.querySelector.bind(document)
@@ -34,11 +33,10 @@ const channelTpl = ({title, body, slug} = {}) => html`
 	</div>`
 
 const channelsTpl = channels => {
-	return html`
-		${channels
-			.filter(c => c.tracks && Object.keys(c.tracks).length > 20)
-			.map(c => render(channelTpl(c), $('aside')))
-	}`
+	const byTracks = c => c.tracks && Object.keys(c.tracks).length > 20
+	return html`<div>
+		${channels.filter(byTracks).map(channelTpl)}
+	</div>`
 }
 
 const crossfaderTpl = (vol, update) => html`
