@@ -18,7 +18,7 @@ html,
 html radio4000-player,
 input,
 button {
-	font-family: 'nanum gothic coding', serif;
+	font-family: system-ui, system-ui, sans-serif;
 }
 
 radio4000-mix {
@@ -133,10 +133,10 @@ radio4000-player .PlayerControl {
 .Channel::after {
 	content: '';
 	height: 1px;
-	left: 2.7em;
 	position: absolute;
+	left: 2.5em;
+	right: 2.5em;
 	margin-top: auto;
-	right: 2.7em;
 	background-image: linear-gradient(to right, #333, transparent, #333);
 	pointer-events: none;
 }
