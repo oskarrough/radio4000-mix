@@ -2,7 +2,7 @@
 
 let f
 
-function tweenValue(from, to, callback) {
+export function tweenValue(from, to, callback) {
 	// Cancel previous animation if already running
 	if (f) cancelAnimationFrame(f)
 
@@ -18,4 +18,23 @@ function tweenValue(from, to, callback) {
 	f = requestAnimationFrame(step)
 }
 
-export {tweenValue}
+// Below is copy/paste from radio4000-sdk because it isn't ESM ready.
+function toObject(obj, id) {
+	return Object.assign(obj, {id: id})
+}
+function toArray(data) {
+	return Object.keys(data).map(function(id) {
+		return toObject(data[id], id)
+	})
+}
+
+export function findChannels(max) {
+	let url = 'https://radio4000.firebaseio.com/channels.json'
+	if (max) {
+		url += '?orderBy="created"&limitToFirst=' + max
+	}
+	return fetch(url)
+		.then(res => res.json())
+		.then(toArray)
+}
+
