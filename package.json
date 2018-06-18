@@ -2,7 +2,7 @@
   "name": "radio4000-mix",
   "private": true,
   "scripts": {
-    "start": "parcel index.html",
+    "start": "parcel serve index.html",
     "build": "parcel build index.html --public-url ./",
     "postbuild": "find dist/index.html | xargs sed -i -e 's/ type=\"module\"//g'"
   },
