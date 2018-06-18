@@ -1,3 +1,4 @@
+/* global List */
 import {html, render} from './node_modules/lit-html/lib/lit-extended.js'
 // import {findChannels} from './node_modules/radio4000-sdk/dist/radio4000-sdk.es.js'
 import {findChannels, tweenValue} from './utils.js'
@@ -52,15 +53,18 @@ const setVolume = vol => {
 const fadeTo = (to, from = Number($('input[type="range"]').value)) =>
 	tweenValue(from, to, setVolume)
 
-// Start initial render
-const queryParams = new URL(document.location).searchParams
-render(crossfaderTpl(50, setVolume), $('crossfader'))
-render(deckTpl({slug: queryParams.get('a') || '200ok'}), left)
-render(deckTpl({slug: queryParams.get('b') || 'nomads'}), right)
+const init = () => {
+	const queryParams = new URL(document.location).searchParams
 
-findChannels().then(channels => {
-	render(channelsTpl(channels), $('aside'))
-	render(searchTpl, $('filter'))
-	// Enable search with list.js
-	let list = List($('main'), {valueNames: ['Channel-title', 'Channel-body']})
-})
+	render(crossfaderTpl(50, setVolume), $('crossfader'))
+	render(deckTpl({slug: queryParams.get('a') || '200ok'}), left)
+	render(deckTpl({slug: queryParams.get('b') || 'nomads'}), right)
+	findChannels().then(channels => {
+		render(channelsTpl(channels), $('aside'))
+		render(searchTpl, $('filter'))
+		// Enable search with list.js
+		let list = List($('main'), {valueNames: ['Channel-title', 'Channel-body']})
+	})
+}
+
+init()
