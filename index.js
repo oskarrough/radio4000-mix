@@ -57,7 +57,7 @@ const init = () => {
 	const queryParams = new URL(document.location).searchParams
 
 	render(crossfaderTpl(50, setVolume), $('crossfader'))
-	render(deckTpl({slug: queryParams.get('a') || '200ok'}), left)
+	render(deckTpl({slug: queryParams.get('a') || 'good-time-radio'}), left)
 	render(deckTpl({slug: queryParams.get('b') || 'nomads'}), right)
 	findChannels().then(channels => {
 		render(channelsTpl(channels), $('aside'))
