@@ -2,8 +2,8 @@
   "name": "radio4000-mix",
   "private": true,
   "scripts": {
-    "start": "parcel serve index.html",
-    "build": "parcel build index.html --public-url ./",
+    "start": "parcel serve src/index.html",
+    "build": "parcel build src/index.html --public-url ./",
     "postbuild": "find dist/index.html | xargs sed -i -e 's/ type=\"module\"//g'"
   },
   "dependencies": {

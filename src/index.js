@@ -1,5 +1,5 @@
 /* global List */
-import {html, render} from './node_modules/lit-html/lib/lit-extended.js'
+import {html, render} from 'https://cdn.jsdelivr.net/npm/lit-html@0.10.2/lib/lit-extended.js'
 // import {findChannels} from './node_modules/radio4000-sdk/dist/radio4000-sdk.es.js'
 import {findChannels, tweenValue} from './utils.js'
 
